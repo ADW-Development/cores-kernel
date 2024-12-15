@@ -5,8 +5,8 @@
 CURRENT_USER=$(whoami)
 
 
-CRED_FILE="C:/Users/$CURRENT_USER/downloads/cores-kernel-0.0.1/cred_file.txt"
-SETUP_FILE="C:/Users/$CURRENT_USER/downloads/cores-kernel-0.0.1/setup.sh"
+CRED_FILE="C:/Users/$CURRENT_USER/downloads/cores-kernel-0.0.3/cred_file.txt"
+SETUP_FILE="C:/Users/$CURRENT_USER/downloads/cores-kernel-0.0.3/setup.sh"
 
 if [ ! -f "$FILE" ]; then
   echo "looks like you have not used this os before. setting you up."
