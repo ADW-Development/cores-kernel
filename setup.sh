@@ -1,26 +1,31 @@
 # cores kernel
 # ©2024 ADW-development
 
-FILE_NAME_TOMAKE = "cred_file.txt"
-if [ ! -f "$FILE_NAME_TOMAKE" ]; then 
-  touch "$FILE_NAME_TOMAKE"
-else 
-  echo "proceeding..." 
+filename="cred_file.txt"
+
+if [ ! -f "$filename" ]; then
+    touch "$filename"
+    echo "File '$filename' created."
+else
+    echo "Proceeding..."
 fi
 
-echo "welcome to the setup! lets get your credentials."
+echo "Welcome to the setup! Let's get your credentials."
 
-read -p "enter your username:" USERNAME
-read -sp "enter your password: " PASSWORD
+read -p "Enter your username: " username
+read -sp "Enter your password: " password
+echo
 
-CRED_FILE="C:/Users/$(whoami)/downloads/cores-kernel-0.0.3/cred_file.txt"
+cred_file="$HOME/downloads/cores-kernel-0.0.3/cred_file.txt"
 
-echo "$USERNAME" > "$CRED_FILE"
-echo "$PASSWORD" >> "$CRED_FILE"
+mkdir -p "$(dirname "$cred_file")"
 
-if [ -f "$CRED_FILE" ]; then
-  echo "made your account"
+echo "$username" > "$cred_file"
+echo "$password" >> "$cred_file"
+
+if [ -f "$cred_file" ]; then
+    echo "Made your account."
 else
-  echo "failed to make your account."
-  exit 1
+    echo "Failed to make your account."
+    exit 1
 fi
