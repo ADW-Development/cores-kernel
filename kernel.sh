@@ -1,36 +1,26 @@
 # cores kernel
 # ©2024 ADW-development
 
-# check if the user has installed the OS already
-CURRENT_USER=$(whoami)
-
-
-CRED_FILE="C:/Users/$CURRENT_USER/downloads/coreskernel-0.0.1/cred_file.txt"
-SETUP_FILE="C:/Users/$CURRENT_USER/downloads/coreskernel-0.0.1/setup.sh"
-
-if [ ! -f "$FILE" ]; then
-  echo "looks like you have not used this os before. setting you up."
-  
-  if [ -f "$SETUP_SCRIPT" ]; then
-    bash "$SETUP_SCRIPT"
-  else
-    echo "error: setup script not found at $SETUP_SCRIPT. please make sure you have installed the files to the right location"
-    exit 1
-  fi
-
-  exit 0
+FILE_NAME_TOMAKE = "cred_file.txt"
+if [ ! -f "$FILE_NAME_TOMAKE" ]; then 
+  touch "$FILE_NAME_TOMAKE"
+else 
+  echo "proceeding..." 
 fi
+
+echo "welcome to the setup! lets get your credentials."
+
+read -p "enter your username:" USERNAME
+read -sp "enter your password: " PASSWORD
+
+CRED_FILE="C:/Users/$(whoami)/downloads/coreskernel-0.0.1/cred_file.txt"
+
+echo "$USERNAME" > "$CRED_FILE"
+echo "$PASSWORD" >> "$CRED_FILE"
+
+if [ -f "$CRED_FILE" ]; then
+  echo "made your account"
 else
-    # lets get the username and password
-    USERNAME=$(sed -n '1p' "$CRED_FILE")
-    PASSWORD=$(sed -n '2p' "$CRED_FILE")
-    # now lets make em enter the password
-    read -p "welcome back, $USERNAME enter your password:" ENTERED_PASSWORD
-    if [ $ENTERED_PASSWORD != $PASSWORD:
-        while [ $ENTERED_PASSWORD != $PASSWORD]; do
-            read -p "welcome back, $USERNAME enter your password:" ENTERED_PASSWORD
-    echo "welcome back to cores! $USERNAME"
-    while [ false != true ]; do
-        read -p "$USERNAME$> " COMMAND
-        if [ $COMMAND == "help"]; then
-            echo "help - show this message"
+  echo "failed to make your account."
+  exit 1
+fi
