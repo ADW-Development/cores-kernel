@@ -1,6 +1,13 @@
 # cores kernel
 # ©2024 ADW-development
 
+FILE_NAME_TOMAKE = "cred_file.txt"
+if [ ! -f "$FILE_NAME_TOMAKE" ]; then 
+  touch "$FILE_NAME_TOMAKE"
+else 
+  echo "proceeding..." 
+fi
+
 echo "welcome to the setup! lets get your credentials."
 
 read -p "enter your username:" USERNAME
