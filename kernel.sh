@@ -3,8 +3,11 @@
 
 # check if the user has installed the OS already
 CURRENT_USER=$(whoami)
+
+
 CRED_FILE="C:/Users/$CURRENT_USER/downloads/coreskernel-0.0.1/cred_file.txt"
 SETUP_FILE="C:/Users/$CURRENT_USER/downloads/coreskernel-0.0.1/setup.sh"
+
 if [ ! -f "$FILE" ]; then
   echo "looks like you have not used this os before. setting you up."
   
@@ -14,6 +17,7 @@ if [ ! -f "$FILE" ]; then
     echo "error: setup script not found at $SETUP_SCRIPT. please make sure you have installed the files to the right location"
     exit 1
   fi
+
   exit 0
 fi
 else
